@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+
+backend/contacts.json
+
+.env
+.vscode/

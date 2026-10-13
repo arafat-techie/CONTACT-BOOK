@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Rahul Sharma",
+        "phone": "9876543210",
+        "email": "rahul@example.com",
+        "group": "College",
+        "favorite": true,
+        "created_at": "2026-10-14 10:00:00",
+        "last_viewed": "2026-10-14 10:30:00"
+    },
+    {
+        "id": 2,
+        "name": "Priya Singh",
+        "phone": "9123456780",
+        "email": "priya@example.com",
+        "group": "Friends",
+        "favorite": false,
+        "created_at": "2026-10-14 11:00:00",
+        "last_viewed": "2026-10-14 11:20:00"
+    }
+]

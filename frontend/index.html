@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Book</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         SIDEBAR
+    ================================== -->
+
+    <aside class="sidebar">
+
+        <h1>📒 Contact Book</h1>
+
+
+        <button
+            class="menu-btn"
+            data-page="dashboardPage">
+
+            🏠 Dashboard
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="addPage">
+
+            ➕ Add Contact
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="viewPage">
+
+            👥 All Contacts
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="searchPage">
+
+            🔍 Search
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="updatePage">
+
+            ✏️ Update
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="deletePage">
+
+            🗑️ Delete
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="favoritePage">
+
+            ⭐ Favorites
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="groupPage">
+
+            🏷️ Groups
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="statisticsPage">
+
+            📊 Statistics
+
+        </button>
+
+
+        <button
+            class="menu-btn"
+            data-page="recentPage">
+
+            📞 Recent Contacts
+
+        </button>
+
+
+    </aside>
+
+
+    <!-- =================================
+         MAIN
+    ================================== -->
+
+    <main class="main">
+
+
+        <header>
+
+            <h2>Contact Book</h2>
+
+            <p>
+                Manage your contacts beautifully
+            </p>
+
+        </header>
+
+
+        <section id="content">
+
+
+            <!-- =================================
+                 DASHBOARD
+            ================================== -->
+
+            <div
+                id="dashboardPage"
+                class="page">
+
+                <div class="welcome">
+
+                    <h2>
+                        Welcome 👋
+                    </h2>
+
+                    <p>
+                        Your personal contact management
+                        dashboard.
+                    </p>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <span>👥</span>
+
+                        <h3 id="dashboardTotal">
+                            0
+                        </h3>
+
+                        <p>
+                            Total Contacts
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>⭐</span>
+
+                        <h3 id="dashboardFavorites">
+                            0
+                        </h3>
+
+                        <p>
+                            Favorites
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>🏷️</span>
+
+                        <h3 id="dashboardGroups">
+                            0
+                        </h3>
+
+                        <p>
+                            Groups
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <h3 class="section-title">
+                    📞 Recent Contacts
+                </h3>
+
+                <div id="dashboardRecent"></div>
+
+            </div>
+
+
+            <!-- =================================
+                 ADD CONTACT
+            ================================== -->
+
+            <div
+                id="addPage"
+                class="page hidden">
+
+                <h2>
+                    ➕ Add Contact
+                </h2>
+
+                <p>
+                    Add a new contact to your contact book.
+                </p>
+
+
+                <form
+                    id="addForm"
+                    class="form">
+
+
+                    <input
+                        type="text"
+                        id="addName"
+                        placeholder="Full Name"
+                        required
+                    >
+
+
+                    <input
+                        type="text"
+                        id="addPhone"
+                        placeholder="Phone Number"
+                        required
+                    >
+
+
+                    <input
+                        type="email"
+                        id="addEmail"
+                        placeholder="Email Address"
+                        required
+                    >
+
+
+                    <select id="addGroup">
+
+                        <option value="Family">
+                            Family
+                        </option>
+
+                        <option value="Friends">
+                            Friends
+                        </option>
+
+                        <option value="College">
+                            College
+                        </option>
+
+                        <option value="Work">
+                            Work
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="action-btn">
+
+                        Add Contact
+
+                    </button>
+
+
+                </form>
+
+
+                <p id="addMessage"></p>
+
+            </div>
+
+
+            <!-- =================================
+                 ALL CONTACTS
+            ================================== -->
+
+            <div
+                id="viewPage"
+                class="page hidden">
+
+                <h2>
+                    👥 All Contacts
+                </h2>
+
+
+                <button
+                    id="refreshBtn"
+                    class="action-btn">
+
+                    🔄 Refresh
+
+                </button>
+
+
+                <button
+                    id="exportBtn"
+                    class="action-btn">
+
+                    📥 Export CSV
+
+                </button>
+
+
+                <div id="contactList"></div>
+
+            </div>
+
+
+            <!-- =================================
+                 SEARCH
+            ================================== -->
+
+            <div
+                id="searchPage"
+                class="page hidden">
+
+                <h2>
+                    🔍 Search Contact
+                </h2>
+
+
+                <div class="choice-buttons">
+
+                    <button
+                        id="searchNameBtn"
+                        class="action-btn">
+
+                        Search by Name
+
+                    </button>
+
+
+                    <button
+                        id="searchPhoneBtn"
+                        class="action-btn">
+
+                        Search by Phone
+
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="searchForm"
+                    class="form hidden">
+
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search..."
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="action-btn">
+
+                        🔍 Search
+
+                    </button>
+
+                </form>
+
+
+                <div id="searchResults"></div>
+
+            </div>
+
+
+            <!-- =================================
+                 UPDATE
+            ================================== -->
+
+            <div
+                id="updatePage"
+                class="page hidden">
+
+                <h2>
+                    ✏️ Update Contact
+                </h2>
+
+
+                <div class="choice-buttons">
+
+                    <button
+                        id="updateNameBtn"
+                        class="action-btn">
+
+                        Update by Name
+
+                    </button>
+
+
+                    <button
+                        id="updatePhoneBtn"
+                        class="action-btn">
+
+                        Update by Phone
+
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="updateSearchForm"
+                    class="form hidden">
+
+
+                    <input
+                        type="text"
+                        id="updateSearchInput"
+                        placeholder="Search..."
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="action-btn">
+
+                        🔍 Find Contact
+
+                    </button>
+
+                </form>
+
+
+                <div id="updateResults"></div>
+
+
+                <form
+                    id="editForm"
+                    class="form hidden">
+
+
+                    <input
+                        type="text"
+                        id="editName"
+                        placeholder="Name"
+                        required
+                    >
+
+
+                    <input
+                        type="text"
+                        id="editPhone"
+                        placeholder="Phone"
+                        required
+                    >
+
+
+                    <input
+                        type="email"
+                        id="editEmail"
+                        placeholder="Email"
+                        required
+                    >
+
+
+                    <select id="editGroup">
+
+                        <option value="Family">
+                            Family
+                        </option>
+
+                        <option value="Friends">
+                            Friends
+                        </option>
+
+                        <option value="College">
+                            College
+                        </option>
+
+                        <option value="Work">
+                            Work
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="submit"
+                        class="action-btn">
+
+                        💾 Save Changes
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================
+                 DELETE
+            ================================== -->
+
+            <div
+                id="deletePage"
+                class="page hidden">
+
+                <h2>
+                    🗑️ Delete Contact
+                </h2>
+
+
+                <div class="choice-buttons">
+
+                    <button
+                        id="deleteNameBtn"
+                        class="action-btn">
+
+                        Delete by Name
+
+                    </button>
+
+
+                    <button
+                        id="deletePhoneBtn"
+                        class="action-btn">
+
+                        Delete by Phone
+
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="deleteSearchForm"
+                    class="form hidden">
+
+
+                    <input
+                        type="text"
+                        id="deleteSearchInput"
+                        placeholder="Search..."
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="action-btn">
+
+                        🔍 Find Contact
+
+                    </button>
+
+                </form>
+
+
+                <div id="deleteResults"></div>
+
+            </div>
+
+
+            <!-- =================================
+                 FAVORITES
+            ================================== -->
+
+            <div
+                id="favoritePage"
+                class="page hidden">
+
+                <h2>
+                    ⭐ Favorite Contacts
+                </h2>
+
+                <div id="favoriteList"></div>
+
+            </div>
+
+
+            <!-- =================================
+                 GROUPS
+            ================================== -->
+
+            <div
+                id="groupPage"
+                class="page hidden">
+
+                <h2>
+                    🏷️ Contact Groups
+                </h2>
+
+                <div
+                    id="groupList"
+                    class="stats-grid">
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 STATISTICS
+            ================================== -->
+
+            <div
+                id="statisticsPage"
+                class="page hidden">
+
+                <h2>
+                    📊 Statistics
+                </h2>
+
+                <div
+                    id="statisticsList"
+                    class="stats-grid">
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 RECENT
+            ================================== -->
+
+            <div
+                id="recentPage"
+                class="page hidden">
+
+                <h2>
+                    📞 Recent Contacts
+                </h2>
+
+                <div id="recentList"></div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
