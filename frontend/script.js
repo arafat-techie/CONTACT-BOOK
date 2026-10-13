@@ -1,4 +1,4 @@
-const API_URL = "https://contact-book-einy.onrender.com/";
+const API_URL = "https://contact-book-einy.onrender.com";
 
 
 // ==================================================
