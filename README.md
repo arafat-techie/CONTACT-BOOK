@@ -5,6 +5,13 @@
 Contact Book is a simple and user-friendly application for managing personal contacts. It provides contact management, search, favorites, groups, statistics, recent contacts and CSV export through a clean modern interface.
 
 ---
+## 🚀 Live Demo
+
+### 🌐 Frontend
+👉 **[Open Contact Book](https://contact-book-1-ar6k.onrender.com)**
+
+### ⚙️ Backend API
+👉 **[Open Contact Book API](https://contact-book-einy.onrender.com)**
 
 ## 📸 Project Preview
 
